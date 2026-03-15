@@ -1,0 +1,98 @@
+/* =========================
+   PAGE APPARENCE - NEXUS
+========================= */
+
+.settings-page {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.page-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #2563eb;
+}
+
+.page-description {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.appearance-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===== OPTIONS ===== */
+.theme-options {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #111827;
+    transition: color 0.3s ease;
+}
+
+.theme-option input {
+    accent-color: #2563eb;
+    cursor: pointer;
+}
+
+/* ===== BUTTON ===== */
+.btn-save {
+    padding: 0.8rem 1.5rem;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
+}
+
+.btn-save:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+}
+
+/* ===== DARK MODE ===== */
+body.dark-mode .settings-page {
+    background: #1f2937;
+    color: #f8fafc;
+}
+
+body.dark-mode .page-title {
+    color: #93c5fd;
+}
+
+body.dark-mode .page-description {
+    color: #d1d5db;
+}
+
+body.dark-mode .theme-option {
+    color: #f8fafc;
+}
+
+body.dark-mode .btn-save {
+    background: #3b82f6;
+}
+
+body.dark-mode .btn-save:hover {
+    background: #2563eb;
+}

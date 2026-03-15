@@ -1,0 +1,114 @@
+/* =========================
+   PAGE LANGUE - NEXUS
+========================= */
+
+.settings-page {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.page-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #2563eb;
+}
+
+.page-description {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.language-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===== SELECT ===== */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.language-select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111827;
+    background: #f9fafb;
+    cursor: pointer;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-select:hover {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+.language-select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.3);
+}
+
+/* ===== BUTTON ===== */
+.btn-save {
+    padding: 0.8rem 1.5rem;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
+}
+
+.btn-save:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+}
+
+/* ===== DARK MODE ===== */
+body.dark-mode .settings-page {
+    background: #1f2937;
+    color: #f8fafc;
+}
+
+body.dark-mode .page-title {
+    color: #93c5fd;
+}
+
+body.dark-mode .page-description {
+    color: #d1d5db;
+}
+
+body.dark-mode .language-select {
+    background: #374151;
+    color: #f8fafc;
+    border-color: #4b5563;
+}
+
+body.dark-mode .language-select:hover,
+body.dark-mode .language-select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.3);
+}
+
+body.dark-mode .btn-save {
+    background: #3b82f6;
+}
+
+body.dark-mode .btn-save:hover {
+    background: #2563eb;
+}

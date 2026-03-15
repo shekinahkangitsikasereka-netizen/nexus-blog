@@ -1,0 +1,129 @@
+/* =========================
+   PAGE CONNEXION - NEXUS
+========================= */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transition: background 0.3s ease;
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.login-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== FORM ===== */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* ===== BUTTON ===== */
+.btn-login {
+    padding: 0.8rem 1.5rem;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-login:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+}
+
+/* ===== REGISTER LINK ===== */
+.register-link {
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.register-link a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #1e40af;
+}
+
+/* ===== DARK MODE ===== */
+body.dark-mode .login-card {
+    background: #1f2937;
+    color: #f8fafc;
+}
+
+body.dark-mode .login-title {
+    color: #93c5fd;
+}
+
+body.dark-mode .form-group input {
+    background: #374151;
+    color: #f8fafc;
+    border-color: #4b5563;
+}
+
+body.dark-mode .form-group input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.3);
+}
+
+body.dark-mode .btn-login {
+    background: #3b82f6;
+}
+
+body.dark-mode .btn-login:hover {
+    background: #2563eb;
+}
+
+body.dark-mode .register-link {
+    color: #d1d5db;
+}
+
+body.dark-mode .register-link a {
+    color: #3b82f6;
+}
+
+body.dark-mode .register-link a:hover {
+    color: #2563eb;
+}

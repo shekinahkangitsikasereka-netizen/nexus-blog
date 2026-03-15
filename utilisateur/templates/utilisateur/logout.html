@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Déconnexion - Nexus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="logout-container">
+    <div class="logout-icon">🔒</div>
+    <h1 class="logout-title">Déconnexion réussie !</h1>
+    <p class="logout-message">
+        Vous avez été déconnecté avec succès. Nous espérons vous revoir bientôt !
+    </p>
+    <a href="{% url 'utilisateur:index' %}" class="btn-home">Retour à l'accueil</a>
+</div>
+{% endblock %}

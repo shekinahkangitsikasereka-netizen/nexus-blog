@@ -1,0 +1,87 @@
+/* ===== CONTAINER ===== */
+
+.create-article-container {
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 1s ease;
+}
+
+/* ===== CARD ===== */
+
+.create-article-card {
+    background: #fff;
+    padding: 40px;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.create-article-card:hover {
+    transform: translateY(-5px);
+}
+
+.create-article-card h1 {
+    text-align: center;
+    color: #4d77ff;
+    margin-bottom: 30px;
+}
+
+/* ===== FORM ===== */
+
+.article-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4d77ff;
+    box-shadow: 0 0 5px rgba(77, 119, 255, 0.3);
+    outline: none;
+}
+
+/* ===== FILE INPUT ===== */
+
+.form-group input[type="file"] {
+    border: none;
+}
+
+/* ===== BUTTON ===== */
+
+.btn-publish {
+    background: linear-gradient(135deg, #4d77ff, #4d77ff);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-publish:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(77, 119, 255, 0.4);
+}

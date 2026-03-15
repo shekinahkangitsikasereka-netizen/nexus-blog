@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sécurité - Nexus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/securite.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-page">
+    <h2 class="page-title">🔒 Paramètres de sécurité</h2>
+    <p class="page-description">Modifiez votre mot de passe et gérez la sécurité de votre compte.</p>
+
+    <form method="post" class="security-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="current_password">Mot de passe actuel</label>
+            <input type="password" id="current_password" name="current_password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="new_password">Nouveau mot de passe</label>
+            <input type="password" id="new_password" name="new_password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm_password">Confirmer nouveau mot de passe</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+
+        <button type="submit" class="btn-save">Modifier le mot de passe</button>
+    </form>
+</div>
+{% endblock %}

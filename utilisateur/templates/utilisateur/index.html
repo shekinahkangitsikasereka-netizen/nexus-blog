@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Accueil Nexus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Exprime tes idées librement</h1>
+        <p class="hero-subtitle">Découvre les derniers articles de la communauté Nexus</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'utilisateur:create_article' %}" class="btn-primary hero-btn">
+                Publier un article
+            </a>
+        {% else %}
+            <a href="{% url 'utilisateur:login' %}" class="btn-primary hero-btn">
+                Connecte-toi pour publier
+            </a>
+        {% endif %}
+    </div>
+</section>
+
+<!-- ARTICLES -->
+{% if articles %}
+<div class="articles-container">
+    {% for article in articles %}
+    <div class="article-card">
+        <div class="article-image-wrapper">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.titre }}" class="article-image">
+            {% else %}
+                <div class="article-image-placeholder">
+                    <span>Aucune image</span>
+                </div>
+            {% endif %}
+        </div>
+        <div class="article-content">
+            <h2 class="article-title">{{ article.titre }}</h2>
+            <p class="article-author">Par {{ article.auteur.username }}</p>
+
+            <!-- ===== LIKE AJAX ===== -->
+            <div class="article-meta">
+                <button class="like-btn {% if user in article.likes.all %}liked{% endif %}" data-article-id="{{ article.id }}">
+                    ❤️ Like
+                </button>
+                <span id="like-count-{{ article.id }}">{{ article.total_likes }}</span>
+                <span>• {{ article.vues }} vues</span>
+            </div>
+
+            <div class="article-actions">
+                <a href="{% url 'utilisateur:article_detail' article.id %}" class="read-more">
+                    Lire l'article →
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <h3>Aucun article disponible</h3>
+    <p>Sois le premier à publier sur Nexus 🚀</p>
+    {% if user.is_authenticated %}
+        <a href="{% url 'utilisateur:create_article' %}" class="btn-primary">Créer un article</a>
+    {% else %}
+        <a href="{% url 'utilisateur:login' %}" class="btn-primary">Connecte-toi pour créer un article</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const likeButtons = document.querySelectorAll(".like-btn");
+    
+    likeButtons.forEach(btn => {
+        btn.addEventListener("click", function() {
+            const articleId = this.dataset.articleId;
+            const likeCount = document.querySelector(`#like-count-${articleId}`);
+
+            fetch("{% url 'utilisateur:like_article_ajax' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: `article_id=${articleId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.liked) {
+                    btn.classList.add("liked");
+                } else {
+                    btn.classList.remove("liked");
+                }
+                if (likeCount) likeCount.textContent = data.total_likes;
+            })
+            .catch(error => console.error("Erreur Like AJAX :", error));
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Nexus{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+{% block extra_css %}{% endblock %}
+</head>
+
+<body>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="{% url 'utilisateur:index' %}" class="logo">NEXUS</a>
+        <div class="nav-links" id="navLinks">
+            <a href="{% url 'utilisateur:index' %}" class="nav-link">Accueil</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'utilisateur:dashboard' %}" class="nav-link">Dashboard</a>
+                <a href="{% url 'utilisateur:create_article' %}" class="nav-link">Publier</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="nav-user">
+        {% if user.is_authenticated %}
+        <div class="settings-wrapper">
+            <button class="settings-btn" id="settingsToggle">
+                <div class="user-info">
+                    <div class="avatar">{{ user.username|first|upper }}</div>
+                    <div class="user-text">
+                        <span class="username">{{ user.username }}</span>
+                        <span class="email">{{ user.email }}</span>
+                    </div>
+                </div>
+                <span class="gear">⚙</span>
+            </button>
+
+            <div class="settings-menu" id="settingsMenu">
+                <a href="{% url 'utilisateur:profil' %}">👤 Mon Profil</a>
+                <a href="{% url 'utilisateur:securite' %}">🔒 Sécurité</a>
+                <a href="{% url 'utilisateur:apparence' %}">🎨 Apparence</a>
+                <a href="{% url 'utilisateur:langue' %}">🌐 Langue</a>
+
+                <div class="dark-mode-toggle">
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeSwitch">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>🌙 Mode sombre</span>
+                </div>
+
+                <hr>
+                <a href="{% url 'utilisateur:logout' %}" class="danger">🚪 Déconnexion</a>
+            </div>
+        </div>
+        {% else %}
+            <a href="{% url 'utilisateur:login' %}" class="btn-login">Connexion</a>
+            <a href="{% url 'utilisateur:register' %}" class="btn-register">Inscription</a>
+        {% endif %}
+    </div>
+</nav>
+
+<!-- ================= MESSAGES ================= -->
+{% if messages %}
+<div class="messages-container">
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- ================= CONTENU ================= -->
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Nexus</h3>
+            <p>
+                Nexus est une plateforme de partage d’articles et d’idées.
+                Nous connectons les esprits curieux à travers le savoir.
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email : contact@nexus.com</p>
+            <p>Téléphone : +243 XXX XXX XXX</p>
+            <p>Goma, RDC</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Retrouvez-nous</h4>
+            <div class="social-links">
+                
+                <a href="https://www.tiktok.com/@nexusselfreg">TikTok</a>
+                <a href="https://www.youtube.com/channel/UCsA-ThRn4E1Z9MH6rdgD9kg">YouTube</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="nexusselfreg.alindae.com">notre site pour dvp personnel</a>
+                <a href="https://wa.me/243977287139" target="_blank">Contactez-moi sur WhatsApp admin et dvlpeur</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Nexus - Tous droits réservés</p>
+        <p>
+            <a href="{% url 'utilisateur:index' %}">Accueil</a>
+            {% if user.is_authenticated %}
+                | <a href="{% url 'utilisateur:dashboard' %}">Dashboard</a>
+            {% endif %}
+        </p>
+    </div>
+</footer>
+
+<!-- ================= SCRIPT ================= -->
+<script src="{% static 'js/base.js' %}"></script>
+<script src="{% static 'js/like.js' %}"></script>
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!--publier un article-->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/create_article.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="create-article-container">
+
+    <div class="create-article-card">
+        <h1>✍️ Créer un article</h1>
+
+        <form method="post" enctype="multipart/form-data" class="article-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{ form.titre.label_tag }}
+                {{ form.titre }}
+            </div>
+
+            <div class="form-group">
+                {{ form.contenu.label_tag }}
+                {{ form.contenu }}
+            </div>
+
+            <div class="form-group">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+            </div>
+
+            <button type="submit" class="btn-publish">🚀 Publier</button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

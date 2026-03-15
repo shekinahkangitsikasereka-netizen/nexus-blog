@@ -1,0 +1,104 @@
+/* ===== CONTAINER ===== */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: linear-gradient(135deg, #e0f2ff, #bae6ff);
+    animation: fadeIn 1s ease;
+    padding: 20px;
+}
+
+/* ===== CARD ===== */
+.register-card {
+    background: #ffffff;
+    padding: 50px 35px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== TITLE ===== */
+.register-card h1 {
+    color: #1e40af; /* Bleu foncé pro */
+    margin-bottom: 35px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ===== FORM ===== */
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form input {
+    padding: 15px 18px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    transition: 0.3s;
+    font-size: 16px;
+    background-color: #f9fafb;
+}
+
+.register-form input:focus {
+    border-color: #3b82f6; /* Bleu vif */
+    box-shadow: 0 0 10px rgba(59,130,246,0.3);
+    outline: none;
+    background-color: #ffffff;
+}
+
+/* ===== BUTTON ===== */
+.btn-register {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #ffffff;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.btn-register:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(59,130,246,0.4);
+}
+
+/* ===== LOGIN LINK ===== */
+.login-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #475569;
+    text-align: center;
+}
+
+.login-link a {
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+    color: #1e40af;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

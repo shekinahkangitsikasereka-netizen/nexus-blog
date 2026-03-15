@@ -1,0 +1,43 @@
+<!-- page principale après connexion -->
+ {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h1>📚 Mes articles</h1>
+    <a href="/create/" class="btn-new">➕ Nouvel article</a>
+</div>
+
+<div class="articles-grid">
+
+    {% for article in articles %}
+    <div class="article-card">
+
+        {% if article.image %}
+        <img src="{{ article.image.url }}" class="article-img">
+        {% endif %}
+
+        <div class="article-content">
+            <h2>{{ article.titre }}</h2>
+            <p class="article-date">🕒 {{ article.date }}</p>
+
+            <div class="article-actions">
+                <a href="{% url 'utilisateur:article_detail' article.id %}" class="btn-view">Lire</a>
+                <a href="{% url 'utilisateur:edit_article' article.id %}" class="btn-edit">Modifier</a>
+                <a href="{% url 'utilisateur:delete_article' article.id %}" class="btn-delete">Supprimer</a>
+            </div>
+        </div>
+
+    </div>
+    {% empty %}
+        <p class="no-article">Vous n’avez pas encore publié d’article.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

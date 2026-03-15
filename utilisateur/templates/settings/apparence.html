@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Apparence - Nexus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/apparence.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-page">
+    <h2 class="page-title">🎨 Paramètres d'apparence</h2>
+    <p class="page-description">Choisissez vos préférences visuelles pour le site.</p>
+
+    <form method="post" class="appearance-form">
+        {% csrf_token %}
+        <div class="theme-options">
+            <label class="theme-option">
+                <input type="radio" name="theme" value="light" {% if not request.user.profile.dark_mode %}checked{% endif %}>
+                <span>🌞 Mode clair</span>
+            </label>
+            <label class="theme-option">
+                <input type="radio" name="theme" value="dark" {% if request.user.profile.dark_mode %}checked{% endif %}>
+                <span>🌙 Mode sombre</span>
+            </label>
+        </div>
+
+        <button type="submit" class="btn-save">Enregistrer</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-card">
+        <h1 class="profile-title">👤 Profil de {{ user.username }}</h1>
+        <p class="profile-email"><strong>Email :</strong> {{ user.email }}</p>
+
+        <h2 class="articles-title">📝 Mes articles</h2>
+        <ul class="articles-list">
+            {% for article in articles %}
+                <li class="article-item">
+                    <a href="{% url 'utilisateur:article_detail' article.id %}" class="article-link">
+                        {{ article.titre }}
+                    </a>
+                    <span class="article-date">🕒 {{ article.date }}</span>
+                </li>
+            {% empty %}
+                <p class="no-articles">Vous n'avez pas encore publié d'article.</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

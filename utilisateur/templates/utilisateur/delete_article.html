@@ -1,0 +1,26 @@
+<!--supprimer un article (confirmation)-->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/delete_article.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="delete-article-container">
+
+    <div class="delete-article-card">
+        <h1>🛑 Supprimer l'article</h1>
+        <p>Êtes-vous sûr de vouloir supprimer : <strong>"{{ article.titre }}"</strong> ?</p>
+
+        <form method="post" class="delete-article-form">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Oui, supprimer</button>
+            <a href="{% url 'utilisateur:dashboard' %}" class="btn-cancel">Annuler</a>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

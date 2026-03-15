@@ -1,0 +1,26 @@
+<!--modifier un article (plus tard)-->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/edit_article.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="edit-article-container">
+
+    <div class="edit-article-card">
+        <h1>✏️ Modifier l'article</h1>
+
+        <form method="post" enctype="multipart/form-data" class="edit-article-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-save">Enregistrer</button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

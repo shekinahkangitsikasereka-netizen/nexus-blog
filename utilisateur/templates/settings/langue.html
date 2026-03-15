@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Langue - Nexus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/langue.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-page">
+    <h2 class="page-title">🌐 Paramètres de langue</h2>
+    <p class="page-description">Sélectionnez votre langue préférée pour l’interface.</p>
+
+    <form method="post" class="language-form">
+        {% csrf_token %}
+        <div class="select-wrapper">
+            <select name="language" class="language-select">
+                <option value="fr" {% if request.LANGUAGE_CODE == 'fr' %}selected{% endif %}>Français</option>
+                <option value="en" {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                <option value="es" {% if request.LANGUAGE_CODE == 'es' %}selected{% endif %}>Español</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-save">Enregistrer</button>
+    </form>
+</div>
+{% endblock %}

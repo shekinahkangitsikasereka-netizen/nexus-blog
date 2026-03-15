@@ -1,0 +1,319 @@
+/* =========================
+   NAVBAR PREMIUM / SETTINGS
+========================= */
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 30px;
+    background-color: #2563eb;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 0 0 16px 16px;
+    position: relative;
+    z-index: 100;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-left .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #e0e0e0;
+}
+
+.nav-user a {
+    margin-left: 15px;
+}
+
+/* ================= SETTINGS DROPDOWN ================= */
+.settings-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.settings-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.settings-btn:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #111827;
+}
+
+.email {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.gear {
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.settings-btn.active .gear {
+    transform: rotate(180deg);
+}
+
+/* menu caché par défaut avec animation */
+.settings-menu {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 260px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.settings-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.settings-menu a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: #0f172a;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.settings-menu a:hover {
+    background: #f1f5f9;
+    padding-left: 24px;
+}
+
+.settings-menu hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 8px 0;
+}
+
+.settings-menu .danger {
+   
+    font-weight: 600;
+}
+
+.settings-menu .danger:hover {
+    background: #fee2e2;
+}
+
+/* ================= SWITCH MODE SOMBRE ================= */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #0f172a;
+    transition: all 0.25s ease;
+}
+
+.dark-mode-toggle:hover {
+    background: #f1f5f9;
+    padding-left: 22px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 20px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2563eb;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+/* ================= GLASSMORPHISM & DARK MODE ================= */
+body.dark-mode .navbar,
+body.dark-mode .footer {
+    background: rgba(17,24,39,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+body.dark-mode .settings-menu {
+    background-color: rgba(17,24,39,0.95);
+    border-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .settings-menu a {
+    color: #f8fafc;
+}
+
+body.dark-mode .settings-menu a:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .settings-menu .danger:hover {
+    background-color: rgba(220,38,38,0.2);
+}
+
+body.dark-mode .gear {
+    color: #facc15;
+}
+
+/* ================= TRANSITIONS FLUIDES ================= */
+body, .navbar, .footer, .container, .settings-menu {
+    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ================= HAMBURGER MOBILE ================= */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 10px 0;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .nav-links a {
+        padding: 10px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        color: #111827;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    body.dark-mode .nav-links {
+        background-color: #111827;
+    }
+
+    body.dark-mode .nav-links a {
+        color: #f8fafc;
+    }
+
+    body.dark-mode .nav-links a:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+}

@@ -1,0 +1,74 @@
+/* ===== CONTAINER ===== */
+.edit-article-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    animation: fadeIn 1s ease;
+}
+
+/* ===== CARD ===== */
+.edit-article-card {
+    background: #fff;
+    padding: 45px;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.edit-article-card:hover {
+    transform: translateY(-5px);
+}
+
+.edit-article-card h1 {
+    color:#4d77ff;
+    margin-bottom: 30px;
+}
+
+/* ===== FORM ===== */
+.edit-article-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-article-form input,
+.edit-article-form textarea {
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.edit-article-form input:focus,
+.edit-article-form textarea:focus {
+    border-color: #4d77ff;
+    box-shadow: 0 0 5px rgba(77, 119, 255, 0.3);
+    outline: none;
+}
+
+/* ===== BUTTON ===== */
+.btn-save {
+    background: linear-gradient(135deg, #4d77ff, #4d77ff);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-save:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255,77,77,0.4);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

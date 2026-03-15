@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ article.titre }} - Nexus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/article_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="article-detail">
+
+    <!-- ===== ARTICLE ===== -->
+    <div class="article-card">
+        {% if article.image %}
+            <img src="{{ article.image.url }}" alt="{{ article.titre }}" style="max-width:100%; border-radius:12px; margin-bottom:15px;">
+        {% endif %}
+
+        <h1 class="article-title">{{ article.titre }}</h1>
+        <p class="article-content">{{ article.contenu }}</p>
+        <p class="article-author">Par {{ article.auteur.username }}</p>
+
+        <!-- ===== LIKE AJAX & VUES ===== -->
+        <div class="article-meta">
+            {% if user.is_authenticated %}
+            <button class="like-btn {% if user in article.likes.all %}liked{% endif %}" data-article-id="{{ article.id }}">
+                ❤️ Like
+            </button>
+            {% endif %}
+            <span id="like-count-{{ article.id }}">{{ article.total_likes }}</span>
+            <span>• {{ article.vues }} vues</span>
+        </div>
+
+        <!-- ===== PARTAGER ===== -->
+        <button id="share-btn" onclick="navigator.share ? navigator.share({title: '{{ article.titre }}', url: window.location.href}) : alert('Partage non supporté')">
+            🔗 Partager
+        </button>
+    </div>
+
+    <!-- ===== COMMENTS ===== -->
+    <div class="comments-section">
+        <h3>Commentaires</h3>
+
+        {% for commentaire in article.commentaires.all %}
+            <div class="comment">
+                <strong>{{ commentaire.auteur }}</strong>
+                <p>{{ commentaire.contenu }}</p>
+                <small>{{ commentaire.date|date:"d M Y H:i" }}</small>
+            </div>
+        {% empty %}
+            <p class="no-comment">Aucun commentaire pour le moment.</p>
+        {% endfor %}
+
+        <!-- ===== COMMENT FORM ===== -->
+        {% if user.is_authenticated %}
+            <div class="comment-form">
+                <h3>Ajouter un commentaire</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Commenter</button>
+                </form>
+            </div>
+        {% else %}
+            <p>Vous devez être connecté pour commenter.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Like AJAX pour la page article_detail
+    const likeBtn = document.querySelector(".like-btn");
+    const likeCount = document.querySelector("#like-count-{{ article.id }}");
+
+    if (likeBtn) {
+        likeBtn.addEventListener("click", function() {
+            const articleId = this.dataset.articleId;
+
+            fetch("{% url 'utilisateur:like_article_ajax' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: `article_id=${articleId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.liked) {
+                    likeBtn.classList.add("liked");
+                } else {
+                    likeBtn.classList.remove("liked");
+                }
+                likeCount.textContent = data.total_likes;
+            })
+            .catch(error => console.error("Erreur Like AJAX :", error));
+        });
+    }
+});
+</script>
+{% endblock %}
