@@ -1,0 +1,46 @@
+# environnement virtuel
+env/
+venv/
+ENV/
+
+# fichier d'environnement (mots de passe)
+.env
+
+# cache python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# fichiers compilés
+*.so
+
+# base de données locale
+db.sqlite3
+db.sqlite3-journal
+
+# fichiers logs
+*.log
+
+# fichiers système
+.DS_Store
+Thumbs.db
+
+# fichiers IDE
+.vscode/
+.idea/
+
+# fichiers migrations temporaires
+*.pot
+
+# dossier static compilé
+staticfiles/
+
+# média uploadé
+media/
+
+# pytest
+.pytest_cache/
+
+# coverage
+.coverage
+htmlcov/

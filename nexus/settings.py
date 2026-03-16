@@ -8,14 +8,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # ================= BASE =================
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ================= SECURITY =================
-SECRET_KEY = 'django-insecure-t+nz11*is5(buktq95hqzxq3k5w71rt^_ok+18z9-5ea2$tc34'
-DEBUG = True
-ALLOWED_HOSTS = []
+
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 # ================= APPLICATIONS =================
 INSTALLED_APPS = [

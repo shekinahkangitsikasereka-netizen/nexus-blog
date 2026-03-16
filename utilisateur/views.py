@@ -25,7 +25,7 @@ def article_detail(request, id):
     article.vues += 1
     article.save()
 
-    return render(request, "article_detail.html", {"article": article})
+    return render(request, "utilisateur/article_detail.html", {"article": article})
 
     commentaires = article.commentaires.all().order_by('-date')
     form = CommentaireForm()
