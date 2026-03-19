@@ -102,3 +102,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'utilisateur:login'                 # Redirection si utilisateur non connecté
 LOGIN_REDIRECT_URL = 'utilisateur:dashboard'    # Après login
 LOGOUT_REDIRECT_URL = 'index'  # Après logout
+
+
+# ================= SECURITY =================
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "dev-db-password")
+
+DEBUG = False  # Mode développement (important en local)
+
+ALLOWED_HOSTS = ['shekinah.pythonanywhere.com']
